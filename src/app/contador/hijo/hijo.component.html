@@ -1,0 +1,14 @@
+<h4>Contador</h4>
+
+<h5>{{ contador }}</h5>
+
+
+<div class="mx-2">
+    <button class="btn btn-primary mx-1" (click)="dividir()">Dividir</button>
+
+    <button class="btn btn-info mx-1" (click)="multiplicar()">Multiplicar</button>
+</div>
+
+<hr>
+
+<app-nieto [contador]="contador"></app-nieto>
