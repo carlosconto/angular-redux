@@ -1,7 +1,6 @@
-import { Action } from "@ngrx/store";
-import { decrement, increment } from "./contador.action";
+import { actions, decrement, dividir, increment, multiplicar } from "./contador.action";
 
-export function contadorReducer(state: number = 0, action: Action) {
+export function contadorReducer(state: number = 0, action: actions) {
 
     switch (action.type) {
         case increment:
@@ -11,6 +10,12 @@ export function contadorReducer(state: number = 0, action: Action) {
         case decrement:
 
             return state - 1;
+
+        case multiplicar:
+            return state * (action?.payload ?? 0);
+
+        case dividir:
+            return state / (action?.payload ?? 0);
 
         default:
             return state;

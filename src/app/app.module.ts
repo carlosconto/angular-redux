@@ -16,7 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ count: contadorReducer }, {}),
+    StoreModule.forRoot({ count: contadorReducer as any }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
