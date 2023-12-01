@@ -9,6 +9,7 @@ export const multiplicar = '[Contador] MULTIPLICAR';
 
 export const dividir = '[Contador] DIVIDIR';
 
+export const reset = '[Contador] RESET';
 
 export class IncrementAction implements Action {
     readonly type = increment;
@@ -30,4 +31,8 @@ export class DividirAction implements Action {
     constructor(public payload?: number) { }
 }
 
-export type actions = IncrementAction | DecrementAction | MultiplicarAction | DividirAction;
+export class ResetAction implements Action {
+    readonly type = reset;
+}
+
+export type actions = IncrementAction | DecrementAction | MultiplicarAction | DividirAction | ResetAction;

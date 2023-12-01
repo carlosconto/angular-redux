@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component} from '@angular/core';
+import {AppState} from "../../app.reducer";
+import {Store} from "@ngrx/store";
+import {ResetAction} from "../contador.action";
 
 @Component({
   selector: 'app-nieto',
@@ -7,21 +10,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class NietoComponent {
 
-  @Input() contador!: number;
+  public contador!: number;
 
-  @Output() nietoCambia = new EventEmitter<number>();
-
-  constructor() { }
-
-  public dividir() {
-    this.contador /= 2;
-
-    this.nietoCambia.emit(this.contador);
+  constructor(private store: Store<AppState>) {
+    this.store.select('count').subscribe((state) => {
+      this.contador = state;
+    });
   }
 
-  public multiplicar() {
-    this.contador *= 2;
 
-    this.nietoCambia.emit(this.contador);
+  resetCount() {
+    const action = new ResetAction();
+    this.store.dispatch(action);
   }
 }

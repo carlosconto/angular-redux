@@ -1,4 +1,4 @@
-import { actions, decrement, dividir, increment, multiplicar } from "./contador.action";
+import {actions, decrement, dividir, increment, multiplicar, reset} from "./contador.action";
 
 export function contadorReducer(state: number = 0, action: actions) {
 
@@ -16,6 +16,9 @@ export function contadorReducer(state: number = 0, action: actions) {
 
         case dividir:
             return state / (action?.payload ?? 0);
+
+        case reset:
+            return state = 0;
 
         default:
             return state;
